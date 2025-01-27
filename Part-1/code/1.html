@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox and Grid Demonstration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f4f4f9;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    /* Heading Box Styling */
+    .heading-box {
+      background-color: #2d293c;
+      color: white;
+      border-radius: 10px;
+      margin: 20px auto;
+      width: 50%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /*h1 {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+    }*/
+
+    /* Flexbox Section */
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 20px;
+      background-color: #ecf0f1;
+      border-radius: 8px;
+      margin: 20px;
+      position: relative;
+    }
+
+    .flex-item {
+      flex: 1 1 150px;
+      padding: 20px;
+      text-align: center;
+      background-color: #4caf50;
+      color: white;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .flex-item:nth-child(2) {
+      align-self: flex-start;
+      background-color: #ff9800;
+    }
+
+    .flex-item:nth-child(3) {
+      order: -1;
+      background-color: #2196f3;
+    }
+
+    /* New item with z-index */
+    .flex-item:nth-child(6) {
+      background-color: #9b59b6;
+      z-index: 10;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Tooltip Styling */
+    .tooltip {
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fff;
+      color: #333;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+      white-space: nowrap;
+      border: 1px solid #ddd;
+    }
+
+    .flex-item:hover .tooltip, .grid-item:hover .tooltip {
+      opacity: 1;
+    }
+
+    /* Grid Section */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-gap: 15px;
+      padding: 20px;
+      background-color: #ecf0f1;
+      border-radius: 8px;
+      margin: 20px;
+    }
+
+    .grid-item {
+      padding: 20px;
+      text-align: center;
+      background-color: #8e44ad;
+      color: white;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .grid-item:nth-child(2) {
+      grid-column: span 2;
+      background-color: #c0392b;
+    }
+
+    .grid-item:nth-child(4) {
+      grid-row: span 2;
+      background-color: #3498db;
+    }
+
+    .grid-item:nth-child(6) {
+      grid-column: span 3;
+      background-color: #27ae60;
+    }
+
+    .grid-item:nth-child(8) {
+      grid-row: span 3;
+      background-color: #e67e22;
+    }
+
+    /* Footer Styling */
+    .footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #34495e;
+  color: white;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Main Heading -->
+  <div class="heading-box">
+    <h1>Flexbox and Grid Demonstration</h1>
+  </div>
+
+  <!-- Flexbox Section -->
+  <div class="heading-box">
+    <h2>Flexbox Layout</h2>
+  </div>
+  <section>
+    <div class="flex-container">
+      <div class="flex-item">
+        Flex tile 1
+        <div class="tooltip">Default flex alignment.</div>
+      </div>
+      <div class="flex-item">
+        Flex tile 2
+        <div class="tooltip">This item uses <strong>align-self: flex-start</strong> to align at the top.</div>
+      </div>
+      <div class="flex-item">
+        Flex tile 3
+        <div class="tooltip">This item uses <strong>order: -1</strong>, making it appear first.</div>
+      </div>
+      <div class="flex-item">
+        Flex tile 4
+        <div class="tooltip">This item is positioned normally with equal spacing.</div>
+      </div>
+      <div class="flex-item">
+        Flex tile 5
+        <div class="tooltip">This item adjusts its size and placement based on <strong>flex-wrap</strong> settings.</div>
+      </div>
+      <div class="flex-item">
+        Flex tile 6 (z-index)
+        <div class="tooltip">This item demonstrates <strong>z-index</strong> with a higher stacking order, making it appear above the others.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grid Section -->
+  <div class="heading-box">
+    <h2>Grid Layout</h2>
+  </div>
+  <section>
+    <div class="grid-container">
+      <div class="grid-item">
+        Grid tile 1
+        <div class="tooltip">Default grid item occupying one cell.</div>
+      </div>
+      <div class="grid-item">
+        Grid tile 2
+        <div class="tooltip">This item spans <strong>2 columns</strong> using <strong>grid-column: span 2</strong>.</div>
+      </div>
+      <div class="grid-item">
+        Grid tile 3
+        <div class="tooltip">A normal grid item in the layout.</div>
+      </div>
+      <div class="grid-item">
+        Grid tile 4
+        <div class="tooltip">This item spans <strong>2 rows</strong> using <strong>grid-row: span 2</strong>.</div>
+      </div>
+      <div class="grid-item">
+        Grid tile 5
+        <div class="tooltip">Another default grid item in the layout.</div>
+      </div>
+      <div class="grid-item">
+        Grid tile 6
+        <div class="tooltip">This item spans <strong>3 columns</strong> using <strong>grid-column: span 3</strong>.</div>
+      </div>
+      <div class="grid-item">
+        Grid tile 7
+        <div class="tooltip">A simple grid item with no special settings.</div>
+      </div>
+      <div class="grid-item">
+        Grid tile 8
+        <div class="tooltip">This item spans <strong>3 rows</strong> using <strong>grid-row: span 3</strong>.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Hover over the elements to learn about their functionalities!</p>
+  </footer>
+
+</body>
+</html>
